@@ -10,7 +10,7 @@ services:
       - "${WEB_PORT}:8069"
     volumes:
       - odoo-web-data:/var/lib/odoo
-      - ./config:/etc/odoo
+      - ./conf:/etc/odoo
       - ./addons:/mnt/extra-addons
       - ./addons-customize:/mnt/extra-addons-customize
     entrypoint: "/usr/bin/odoo -c /etc/odoo/odoo.conf"
@@ -18,7 +18,7 @@ services:
     container_name: ${DB_HOST}
     image: ${DB_IMAGE}:${DB_TAG}
     environment:
-      - POSTGRES_DB=${DB_NAME}
+      - POSTGRESs_DB=${DB_NAME}
       - POSTGRES_PASSWORD=${DB_PASSWD}
       - POSTGRES_USER=${DB_USER}
       - PGDATA=/var/lib/postgresql/data/pgdata
